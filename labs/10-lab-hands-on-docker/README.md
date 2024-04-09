@@ -13,7 +13,9 @@
 - Pull `busybox` from the gitlab registry
 
 1. What is the default registry ?
+- Docker hub
 2. What is the différence between these images ?
+
 3. Remove all images that aren't from the default registry.
 
 ## Work with container
