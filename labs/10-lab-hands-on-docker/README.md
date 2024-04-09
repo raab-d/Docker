@@ -51,3 +51,5 @@
 2. Delete busybox images
 
 You can use the `prune` command
+\\
+m bkgk
