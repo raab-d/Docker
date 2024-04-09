@@ -20,11 +20,11 @@ Le registre par défaut pour Docker est Docker Hub
 - date de création différente
 - ils ont pas les mêmes version
 - un officiel et l'autres non
-On peux voir les informations en fesant un docker inspect "lien image"
+<br>On peux voir les informations en fesant un docker inspect "lien image"</br>
 3. Remove all images that aren't from the default registry.
-D'abord je supprime le containeur docker container rm 'ID ou nom'
-Je liste les images avec docker image ls
-puis un docker image rm 'ID ou nom'
+<br>D'abord je supprime le containeur docker container rm 'ID ou nom'</br>
+<br>Je liste les images avec docker image ls</br>
+<br>puis un docker image rm 'ID ou nom'</br>
 
 ## Work with container
 
