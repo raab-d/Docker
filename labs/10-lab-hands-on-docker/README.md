@@ -82,7 +82,7 @@ $ docker stop [CONTAINER ID]
 $ docker ps
 
    1. What happend ?
-   $**************************************************
+   -> affiche les containers qui sont en RUN
    2. List all container even the one that is stopped
    $ docker ps -a
 
@@ -105,7 +105,7 @@ $ docker run --rm -it busybox sh
 
 
 2. Re-run the container 
--> ************************
+-> vide
 3. Check the file 
 -> Je ne peux pas vérifier le fichier car le conteneur est éphémère et a été 
    supprimé à la sortie.
