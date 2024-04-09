@@ -18,42 +18,40 @@ The default registry is Docker Hub.
 2. What is the différence between these images ?
 Les deux images ont des répertoires différents et des docker version différentes.
 
-- `busybox` du répertoire de base a deux répertoires : `busybox:latest` et l'adresse complète `registry.hub.docker.com/library/busybox:latest`. Il a également deux RepoDigests.
-- Il n'a pas de hostname, Env, Cmd et valeur pour l'image tandis que le conteneur de `busybox` de `registry.gitlab.com/gitlab-org/cloud-native/mirror/images/` en a.
-- J'ai utilisé la commande : `docker inspect busybox`
+busybox du répertoire de base a deux repértoires : 'busybox:latest' et l'adresse complète 'egistry.hub.docker.com/library/busybox:latest'. 
+Il a également deux RepoDigests. 
+Il n'a pas de hostname, Env, Cmd et valeur pour image tandis que le container de busybox de registry.gitlab.com/gitlab-org/cloud-native/mirror/images/ en a. 
+J'ai utilisé la commande : docker inspect busybox
 
 3. Remove all images that aren't from the default registry.
 
-```sh
 docker container ls -a
-# CONTAINER ID IMAGE NAMES
-# 2ea1e6e60136 registry.gitlab.com/gitlab-org/cloud-native/mirror/images/busybox fervent_ride
-# cb180bb84ce9 registry.hub.docker.com/library/busybox elated_ardinghelli
+CONTAINER ID   IMAGE                                                                           NAMES
+2ea1e6e60136   registry.gitlab.com/gitlab-org/cloud-native/mirror/images/busybox              fervent_ride
+cb180bb84ce9   registry.hub.docker.com/library/busybox                                        elated_ardinghelli
 
 sudo docker container rm fervent_ride
-# Password:
-# fervent_ride
+Password:
+fervent_ride
 
-docker images
-# REPOSITORY TAG IMAGE ID CREATED SIZE
-# registry.gitlab.com/gitlab-org/cloud-native/mirror/images/busybox latest 3772266d7498 9 months ago 4.04MB
-# registry.hub.docker.com/library/busybox latest 46bd05c4a04f 10 months ago 4.04MB
-# busybox latest 46bd05c4a04f 10 months ago 4.04MB
+Nadya@MacBook-Pro-de-Nadya git % docker images
+REPOSITORY                                                          TAG                    IMAGE ID       CREATED         SIZE
+registry.gitlab.com/gitlab-org/cloud-native/mirror/images/busybox   latest                 3772266d7498   9 months ago    4.04MB
+registry.hub.docker.com/library/busybox                             latest                 46bd05c4a04f   10 months ago   4.04MB
+busybox                                                             latest                 46bd05c4a04f   10 months ago   4.04MB
 
-docker rmi 3772266d7498
-# Untagged: registry.gitlab.com/gitlab-org/cloud-native/mirror/images/busybox:latest
-# Untagged: registry.gitlab.com/gitlab-org/cloud-native/mirror/images/busybox@sha256:2376a0c12759aa1214ba83e771ff252c7b1663216b192fbe5e0fb364e952f85c
-# Deleted: sha256:3772266d7498c8df7461f1897f6961cdbc71c63c56c213829d56b9c88bea7634
-# Deleted: sha256:464371b65142dd2c9c006150984a8dd608bb7cfd4c07705d845ab11d4a8eaf82
+Nadya@MacBook-Pro-de-Nadya git % docker rmi 3772266d7498                                                     
+Untagged: registry.gitlab.com/gitlab-org/cloud-native/mirror/images/busybox:latest
+Untagged: registry.gitlab.com/gitlab-org/cloud-native/mirror/images/busybox@sha256:2376a0c12759aa1214ba83e771ff252c7b1663216b192fbe5e0fb364e952f85c
+Deleted: sha256:3772266d7498c8df7461f1897f6961cdbc71c63c56c213829d56b9c88bea7634
+Deleted: sha256:464371b65142dd2c9c006150984a8dd608bb7cfd4c07705d845ab11d4a8eaf82
 
 ## Work with container
 
 1. Run a busybox container
    1. What happend ?
-
       Le container run et fini de s'executer directement car on ne lui a pas donner d'action à faire. 
    2. Fix it with a sleep
-
       docker run busybox sleep 300
       On peut définir le temps qu'on veut, là c'est 5min
 
