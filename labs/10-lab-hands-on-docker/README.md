@@ -56,11 +56,11 @@ Hello world
    2. Exit the container  ========> exit
 2. Re-run the container ===========> docker run --rm -it -v "$(pwd):/app" busybox sh
 3. Check the file =========> aucun retour.
-4. What happened ? ========> le fichier hello.txt n'était plus présent car le conteneur a été recréé à partir de l'image Busybox initiale, sans tenir compte des modifications apportées lors de la première exécution(le fichier a ete supprime)
+4. What happened ? ========> le fichier hello.txt n'était plus présent car le conteneur a été recréé à partir de l'image Busybox initiale, sans tenir compte des modifications apportées lors de la première exécution (le fichier a été supprimé).
 
 ## Clean up
 
 1. List all images ======> docker images
-2. Delete busybox images ==========> Docker % docker rmi $(docker images -q busybox)
+2. Delete busybox images ==========>  docker rmi $(docker images -q busybox)
 
 You can use the `prune` command
