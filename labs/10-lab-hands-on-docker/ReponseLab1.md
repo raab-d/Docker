@@ -21,7 +21,7 @@ Le registre par défaut pour Docker est Docker Hub
 - ils ont pas les mêmes version
 - un officiel et l'autres non
 <br>On peux voir les informations en fesant un docker inspect "lien image"</br>
-3. Remove all images that aren't from the default registry.
+<br>3. Remove all images that aren't from the default registry.</br>
 <br>D'abord je supprime le containeur docker container rm 'ID ou nom'</br>
 <br>Je liste les images avec docker image ls</br>
 <br>puis un docker image rm 'ID ou nom'</br>
@@ -29,21 +29,21 @@ Le registre par défaut pour Docker est Docker Hub
 ## Work with container
 
 1. Run a busybox container
-   1. What happend ?
-   le conteneur démarre et exécute la commande puis s'arréte car pas d'actions
-   2. Fix it with a sleep
-   gardera le conteneur actif pendant le temps indiquer dans le sleep.
-2. Run a busybox container that said "Hello world"
-docker container run busybox echo "Hello world"
-cela affiche 'Hello world'
+  <br> 1. What happend ?</br>
+   <br>le conteneur démarre et exécute la commande puis s'arréte car pas d'actions</br>
+   <br>2. Fix it with a sleep</br>
+  <br> gardera le conteneur actif pendant le temps indiquer dans le sleep.</br>
+<br>2. Run a busybox container that said "Hello world"</br>
+<br>docker container run busybox echo "Hello world"</br>
+<br>cela affiche 'Hello world'</br>
 
 3. Instantiate an interactive shell with busybox
    1. Run a Hello world inside the container
    2. Leave the container
    3. What happened ?
-   cela execute  Hello world dans le conteneur avec winpty docker run -it busybox sh, puis  echo "Hello world" dans le shell.
-   On quitte avec la comande exit sinon le conteneur continura a tourner, ce qui arrêtera le conteneur .
-Commande:
+  <br> cela execute  Hello world dans le conteneur avec winpty docker run -it busybox sh, puis  echo "Hello world" dans le shell.
+   On quitte avec la comande exit sinon le conteneur continura a tourner, ce qui arrêtera le conteneur .</br>
+<br>Commande:</br>
    $ winpty docker run -it busybox sh
    / # echo "Hello world"
    Hello world
@@ -51,11 +51,11 @@ Commande:
    sh: Exit: not found
    / # exit
 
-4. Run a in background that say "Hello world"
-   $     docker container run -d busybox echo "Hello world"
- d10e35e29bd87b9a84eaeaa4780b7360bbad0fc69f16f6aa8e907f3e743bb266
+<br>4. Run a in background that say "Hello world"</br>
+ <br>  $     docker container run -d busybox echo "Hello world"</br>
+<br> d10e35e29bd87b9a84eaeaa4780b7360bbad0fc69f16f6aa8e907f3e743bb266</br>
 
-5. Find the container id
+<br>5. Find the container id</br>
 docker container ls -a
 CONTAINER ID   IMAGE     COMMAND                CREATED              STATUS                          PORTS     NAMES
 b40e7154b267   busybox   "sh"                   About a minute ago   Exited (0) 26 seconds ago                 friendly_shtern
@@ -69,21 +69,21 @@ docker container logs 'ID du container'
    Hello world
    / # exit
 
-7. Stop the container
-docker container stop 'ID du container'
+<br> 7. Stop the container</br>
+<br> docker container stop 'ID du container'</br>
 
-8. List all container
-   1. What happend ?
-   rien s'affiche car aucun est actif
-   2. List all container even the one that is stopped
-si on fais docker container ls cela affiche les containers actif 
-si on fais docker container ls -a cela affiche tous  les containers
+<br>8. List all container</br>
+  <br> 1. What happend ?</br>
+  <br> rien s'affiche car aucun est actif</br>
+  <br> 2. List all container even the one that is stopped</br>
+<br>si on fais docker container ls cela affiche les containers actif </br>
+<br>si on fais docker container ls -a cela affiche tous  les containers</br>
 
-9. Delete the stopped container
-docker container rm 'ID du container'
+<br>9. Delete the stopped container</br>
+<br>docker container rm 'ID du container'</br>
 
-10. Delete all stopped containers
-docker container prune
+<br>10. Delete all stopped containers</br>
+<br>docker container prune</br>
 
 
 
@@ -91,29 +91,29 @@ docker container prune
 
 1. Run a interactif container with busybox that will be deleted at stop
    1. Create a txt file with "Hello"
-   winpty docker run --rm -it busybox sh
-   echo "Hello" > hello.txt
+  <br> winpty docker run --rm -it busybox sh</br>
+  <br> echo "Hello" > hello.txt</br>
    
-   2. Exit the container
-   exit
-2. Re-run the container 
-docker run -it busybox sh
-3. Check the file 
-ls
-4. What happened ?
-il n'y aura pas de fichier car le contener est temporaire 
+   <br>2. Exit the container</br>
+ <br>  exit</br>
+<br>2. Re-run the container </br>
+<br>docker run -it busybox sh</br>
+<br>3. Check the file </br>
+<br>ls</br>
+<br>4. What happened ?</br>
+<br>il n'y aura pas de fichier car le contener est temporaire</br> 
 
 ## Clean up
 
-1. List all images
-docker image ls
-2. Delete busybox images
-tous les image qui ne sont pas utilisé:
+<br>1. List all images</br>
+<br>docker image ls</br>
+<br>2. Delete busybox images</br>
+<br>tous les image qui ne sont pas utilisé:</br>
 docker image prune
-image spécifique : 
+<br>image spécifique : </br>
 docker image rm busybox
-toute les images de busybox(a vérifier car j'ai un conflit):
-docker rmi $(docker images 'busybox' -q)
+<br>toute les images de busybox(a vérifier car j'ai un conflit):
+docker rmi $(docker images 'busybox' -q)</br>
 
 
 You can use the `prune` command
