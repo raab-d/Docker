@@ -13,7 +13,9 @@
 - Pull `busybox` from the gitlab registry
 
 1. What is the default registry ?
+Le registre par défaut pour Docker est Docker Hub, accessible via registry.hub.docker.com ou simplement par docker.io.
 2. What is the différence between these images ?
+Les images busybox provenant de Docker Hub et de GitLab peuvent être identiques en termes de fonctionnalité et de contenu. Cependant, les différences peuvent résider dans leur cycle de mise à jour ou dans des modifications spécifiques apportées par la communauté ou l'organisation qui gère l'image dans le registre alternatif. Par exemple, GitLab pourrait avoir une politique de mise à jour différente ou inclure des configurations spécifiques pour mieux intégrer busybox dans ses pipelines CI/CD.
 3. Remove all images that aren't from the default registry.
 
 ## Work with container
