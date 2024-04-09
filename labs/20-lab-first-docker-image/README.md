@@ -24,11 +24,11 @@
 2. List your docker images ========> docker images
    1. What do you see ? 
    Je vois une liste des images Docker sur mon système, y compris l'image que j'ai récemment taguée. Parmi elles, il y a une entrée pour ademaitidir/my_awesome_image avec le tag 1.0. Cette image a un ID spécifique, une taille, et une date de création. L'image originale my_awesome_image est également listée, potentiellement avec le tag latest. Il pourrait y avoir aussi des images sans tag (<none>).
-   
+
 3. Use the CLI to log into your docker account =======>  docker login
 4. Push your image =========> docker push ademaitidir/my_awesome_image:1.0
-5. Check that your image is available on `https://hub.docker.com/repository/docker/<dockerHubId>/my_awsome_image/`   ======> Oui 
-6. Delete the repository `https://hub.docker.com/repository/docker/<dockerHubId>/my_awsome_image/settings` ======> O
+5. Check that your image is available on `https://hub.docker.com/repository/docker/<dockerHubId>/my_awsome_image/`   ======> fait 
+6. Delete the repository `https://hub.docker.com/repository/docker/<dockerHubId>/my_awsome_image/settings` ======> fait
 
 
 
