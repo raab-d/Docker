@@ -36,13 +36,13 @@ sudo docker container rm fervent_ride
 Password:
 fervent_ride
 
-Nadya@MacBook-Pro-de-Nadya git % docker images
+docker images
 REPOSITORY                                                          TAG                    IMAGE ID       CREATED         SIZE
 registry.gitlab.com/gitlab-org/cloud-native/mirror/images/busybox   latest                 3772266d7498   9 months ago    4.04MB
 registry.hub.docker.com/library/busybox                             latest                 46bd05c4a04f   10 months ago   4.04MB
 busybox                                                             latest                 46bd05c4a04f   10 months ago   4.04MB
 
-Nadya@MacBook-Pro-de-Nadya git % docker rmi 3772266d7498                                                     
+docker rmi 3772266d7498                                                     
 Untagged: registry.gitlab.com/gitlab-org/cloud-native/mirror/images/busybox:latest
 Untagged: registry.gitlab.com/gitlab-org/cloud-native/mirror/images/busybox@sha256:2376a0c12759aa1214ba83e771ff252c7b1663216b192fbe5e0fb364e952f85c
 Deleted: sha256:3772266d7498c8df7461f1897f6961cdbc71c63c56c213829d56b9c88bea7634
@@ -68,7 +68,7 @@ Deleted: sha256:464371b65142dd2c9c006150984a8dd608bb7cfd4c07705d845ab11d4a8eaf82
    
    1. Run a Hello world inside the container
       
-      Nadya@MacBook-Pro-de-Nadya git % docker run -it busybox sh
+      docker run -it busybox sh
       / # echo 'Hello world'
       Hello world
    2. Leave the container
@@ -87,7 +87,7 @@ f7e842842b8c777653287c50ebc3f146ad89f5242d8849b368e71bcdd8ac54ee
 
 5. Find the container id
    
-Nadya@MacBook-Pro-de-Nadya git % docker ps -a
+docker ps -a
 CONTAINER ID   IMAGE                                     COMMAND                CREATED          STATUS                        
 f7e842842b8c   busybox                                   "echo 'Hello world'"   23 seconds ago   Exited (0) 22 seconds ago
 Le container id est celui du dernier processus exécuté : f7e842842b8c
@@ -122,7 +122,7 @@ docker rm f7e842842b8c
 
 10. Delete all stopped containers
     
-Nadya@MacBook-Pro-de-Nadya git % docker container prune          
+docker container prune          
 WARNING! This will remove all stopped containers.
 Are you sure you want to continue? [y/N] y
 
