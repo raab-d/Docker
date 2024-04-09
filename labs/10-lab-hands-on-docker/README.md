@@ -1,7 +1,7 @@
 # Lab 1 - Hands on Docker
 
 ## Pull your first images.
-
+   
 ### Tips
 
 - Busybox from the docker hub registry: `registry.hub.docker.com/library/busybox`
