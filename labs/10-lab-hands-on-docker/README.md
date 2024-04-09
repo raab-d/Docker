@@ -3,7 +3,7 @@
 ## Pull your first images.
 
 ### Tips
-
+test 
 - Busybox from the docker hub registry: `registry.hub.docker.com/library/busybox`
 - Pull busybox from another registry: `registry.gitlab.com/gitlab-org/cloud-native/mirror/images/busybox`
 
