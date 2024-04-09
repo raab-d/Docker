@@ -108,10 +108,10 @@ docker container logs 'ID du container'
 <br>1. List all images</br>
 <br>docker image ls</br>
 <br>2. Delete busybox images</br>
-<br>tous les image qui ne sont pas utilisé:</br>
-docker image prune
-<br>image spécifique : </br>
-docker image rm busybox
+<br>tous les image qui ne sont pas utilisé:
+docker image prune</br>
+<br>image spécifique : 
+docker image rm busybox</br>
 <br>toute les images de busybox(a vérifier car j'ai un conflit):
 docker rmi $(docker images 'busybox' -q)</br>
 
