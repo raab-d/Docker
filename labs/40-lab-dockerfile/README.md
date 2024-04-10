@@ -12,9 +12,15 @@ Create a dockerfile for a Flask application (python).
    1. `requirement.txt`, contain python dependencies 
    2. `app.py`, contain our flask app that listen on port `9090`
 2. Create a new directory named `myapp` 
+	mkdir myapp
 3. Copy `requirement.txt` and `app.py` in `myapp`
+	cp app.py myapp 
+	cp requirements.txt myapp 
 4. Run `cd myapp`
+	On se trouve à présent dans le répertoire
 5. Create a file name `Dockerfile`
+	touch Dockerfile
+	ls pour vérifier que c'est bien créé dans le répertoir myapp
 
 ### Modify the dockerfile
 
@@ -27,12 +33,48 @@ Create a dockerfile for a Flask application (python).
 7. Specify the maintainer and the version of the dockerfile
 8. Make sure the container will run the command `python app.py`
 
+	Dockerfile correspondant :
+
+	# Use python image as base
+	FROM python:3.9
+
+	# Copy requirement.txt to /app/requirements.txt
+	COPY requirements.txt /app/requirements.txt
+
+	# Set working directory to /app
+	WORKDIR /app
+
+	# Install python dependencies
+	RUN pip install -r requirements.txt
+
+	# Copy app.py to /app
+	COPY app.py /app
+
+	# Expose port 9090
+	EXPOSE 9090
+
+	# Specify maintainer
+	LABEL maintainer="Anna DIAW <annadiaw2000@gmail.com>"
+
+	# Specify version
+	LABEL version="1.0"
+
+	# Command to run the application
+	CMD ["python", "app.py"]
+
+
 ### Build the image
 
 1. Build the docker image and name it <dockerHubId>/my_flask:1.0
+	docker login
+	docker build -t anna2000/my_flask:1.0 .
 2. Push it to the docker hub
+	docker push anna2000/my_flask:1.0
+
 
 ### Run it 
 
 1. Run your application as `app`
+	docker run -d --name app -p 9090:9090 anna2000/my_flask:1.0
 2. curl localhost:9090
+	"This is a sfeir school about Docker !" affiché sur le Terminal. Cela montre que l'application est bien lancé.
