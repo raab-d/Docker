@@ -11,7 +11,8 @@ Create a dockerfile for a Flask application (python).
 1. There is two file 
    1. `requirement.txt`, contain python dependencies 
    2. `app.py`, contain our flask app that listen on port `9090`
-2. Create a new directory named `myapp` 
+2. Create a new directory named `myapp`<br>
+Command: mkdir myapp
 3. Copy `requirement.txt` and `app.py` in `myapp`
 4. Run `cd myapp`
 5. Create a file name `Dockerfile`
@@ -29,10 +30,14 @@ Create a dockerfile for a Flask application (python).
 
 ### Build the image
 
-1. Build the docker image and name it <dockerHubId>/my_flask:1.0
-2. Push it to the docker hub
+1. Build the docker image and name it <dockerHubId>/my_flask:1.0<br><br>
+![alt text](image.png)
+2. Push it to the docker hub<br><br>
+![alt text](image-1.png)
 
 ### Run it 
 
-1. Run your application as `app`
-2. curl localhost:9090
+1. Run your application as `app`<br><br>
+![alt text](image-3.png)
+2. curl localhost:9090<br><br>
+![alt text](image-2.png)
