@@ -1,0 +1,86 @@
+# Lab 5 - Dockerfile
+
+## Create your docker image
+
+Create a dockerfile for a Flask application (python).
+
+### Tips
+ 
+### Create your dockerfile
+
+1. There is two file 
+   1. `requirement.txt`, contain python dependencies 
+   2. `app.py`, contain our flask app that listen on port `9090`
+
+2. Create a new directory named `myapp` 
+   40-lab-dockerfile % mkdir myapp
+
+3. Copy `requirement.txt` and `app.py` in `myapp`
+   40-lab-dockerfile % cp app.py requirements.txt myapp 
+
+4. Run `cd myapp`
+
+5. Create a file name `Dockerfile`
+   touch Dockerfile
+
+### Modify the dockerfile
+
+1. Use a python image as base
+   FROM python:3.8
+
+2. Copy `requirement.txt` in `/app/requirements.txt`
+   COPY requirements.txt /app/requirements.txt
+
+3. Define `/app` as working directory
+   WORKDIR /app
+
+4. Install python dependencies using `pip install -r <file>`
+   RUN pip install -r requirements.txt
+
+5. Copy `app.py` inside `/app`
+   COPY app.py /app
+
+6. Specify that the container use the port `9090`
+   EXPOSE 9090
+
+7. Specify the maintainer and the version of the dockerfile
+   LABEL maintainer="nadya.dorosenco@gmail.com"
+   LABEL version="1.0"
+
+8. Make sure the container will run the command `python app.py`
+CMD ["python", "app.py"]
+
+### Build the image
+
+1. Build the docker image and name it <dockerHubId>/my_flask:1.0
+   40-lab-dockerfile % docker build -t nadya77/my_flask:1.0 .
+
+2. Push it to the docker hub
+   docker login
+   docker push nadya77/my_flask:1.0
+   The push refers to repository [docker.io/nadya77/my_flask]
+   d7cf1051df35: Pushed 
+   42003ffdd34c: Pushed 
+   5f70bf18a086: Pushed 
+   fccc1d8ee91b: Pushed 
+   db41a606ff7d: Mounted from library/python 
+   a49a86cbaedb: Mounted from library/python 
+   a4febae84023: Mounted from library/python 
+   1f17288aff69: Mounted from library/python 
+   29986c3e53d8: Mounted from library/python 
+   e25289bb6ce3: Mounted from library/python 
+   ae1c1144a5f5: Mounted from library/python 
+   7773f6e2f057: Mounted from library/python 
+   1.0: digest: sha256:2e3f17153724bc81703bc2fcb0ad529abc86356ef0756d7135ec1db3fbe1736e size: 2838
+
+### Run it 
+
+1. Run your application as `app`
+
+   docker run -d -p 9090:9090 --name app nadya77/my_flask:1.0
+   798d7c12b4259182122040216d33f9993ae3ac10036ec04ab894edbfbb4723ea
+
+2. curl localhost:9090
+
+   curl localhost:9090
+   This is a sfeir school about Docker !%
