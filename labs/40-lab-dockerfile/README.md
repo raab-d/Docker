@@ -30,9 +30,32 @@ Create a dockerfile for a Flask application (python).
 ### Build the image
 
 1. Build the docker image and name it <dockerHubId>/my_flask:1.0
+```bash
+   docker build labs/40-lab-dockerfile/myapp -t my_flask:1.0 
+```
 2. Push it to the docker hub
+```bash
+   docker tag my_flask:1.0 hugomonteiro21/my_flask:1.0
+   docker push hugomonteiro21/my_flask:1.0
+```
 
 ### Run it 
 
 1. Run your application as `app`
+```bash
+docker run my_flask:1.0                                  
+ * Serving Flask app 'app'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:9090
+ * Running on http://172.17.0.2:9090
+Press CTRL+C to quit
+172.17.0.1 - - [10/Apr/2024 16:11:46] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [10/Apr/2024 16:11:48] "GET /favicon.ico HTTP/1.1" 404 -
+```
 2. curl localhost:9090
+```bash
+curl 172.17.0.2:9090
+This is a sfeir school about Docker !% 
+```
