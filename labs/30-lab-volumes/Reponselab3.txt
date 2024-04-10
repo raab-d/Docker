@@ -1,0 +1,134 @@
+# Lab 4 - Volumes
+
+## Use volumes
+
+### Tips
+
+- Use `docker container inspect ...`
+
+### Existing volumes
+
+1. run `docker container run --name couchdb -d -p 5984:5984 couchdb:2.1`
+Digest: sha256:05a8b4a9bfe8e90fdf8630b404098aab5122c8ead228ad9b8d081309266b1cfb
+Status: Downloaded newer image for couchdb:2.1
+db0753e8752c0adefaf52c83b7c13bddb441b89fb9e2cd3cfe36c157de74ca90
+
+2. Check existing volumes
+   1. Why there is already a volume ?
+   pour inspecter  la couche:
+   docker container inspect couchdb 
+Docker crée automatiquement ce volume lors du démarrage du conteneur si l'image du conteneur spécifie des volumes.
+
+3. Identify the volume that is used by `couchdb`
+docker container run --rm -it --volumes-from couchdb busybox
+
+4. Mount the identified volume to busybox 
+$ winpty docker container run --rm -it --volumes-from couchdb busybox
+
+
+
+5. Check files inside `/opt/couchdb/data`
+/ # ls /opt/couchdb/data
+_dbs.couch         _nodes.couch       _replicator.couch  _users.couch
+/ # exit
+
+6. Stop couchdb
+
+docker container stop couchdb
+couchdb
+
+7. Delete the volume
+
+docker volume ls
+DRIVER    VOLUME NAME
+local     3395a914e4443acff0670c8d75d76fa8ee26888c8d903da8310a7f85f3d03620
+
+on dois dabord remove le containers:
+docker rm couchdb
+couchdb
+
+puis on peux supprimer le volume :
+docker volume rm 3395a914e4443acff0670c8d75d76fa8ee26888c8d903da8310a7f85f3d03620
+3395a914e4443acff0670c8d75d76fa8ee26888c8d903da8310a7f85f3d03620
+
+8. Check that the volume has been deleted
+docker volume ls
+DRIVER    VOLUME NAME
+
+### Create a named volume
+
+1. Create a volume named : `couchdb_vol`
+docker volume create couchdb_vol
+couchdb_vol
+
+2. Run `couchedb` with the created volume
+docker container run --name couchdb -d -p 5984:5984 -v couchdb_vol:/opt/couchdb/data couchdb:2.1
+5628daa75a9b258b60f1285fc7c116806657789cd5b1f370764116d61bda700c
+
+3. Inspect the container and look at `Mounts` that `couchdb_vol` is used
+docker container inspect couchdb
+  "Mounts": 
+            
+                "Type": "volume",
+                "Name": "couchdb_vol",
+                "Source": "/var/lib/docker/volumes/couchdb_vol/_data",
+                "Destination": "/opt/couchdb/data",
+                "Driver": "local",
+                "Mode": "z",
+                "RW": true,
+                "Propagation": ""
+            
+
+### Mount directory
+
+1. Mount `/var/lib/docker` from host to `/dck` into a busybox container 
+winpty docker container run --rm -it -v //var/lib/docker:/dck busybox
+
+2. Check at `ls /dck/volumes/couchdb_vol/_data` inside the container to verify that `couchdb_vol` is available
+$ winpty docker container run --rm -it -v //var/lib/docker:/dck busybox
+/ # ls /dck/volumes/couchdb_vol/_data
+_dbs.couch         _nodes.couch       _replicator.couch  _users.couch
+/# exit
+
+### SideCar Pattern
+
+1. Create a directory named `sidecar` with `mkdir`
+mkdir sidecar
+
+2. Run Busybox
+   1. Command: `sh -c 'while true; do date >> /dck/date.log; sleep 1; done'`
+   2. Volume to mount: `$(pwd)/sidecar:/dck`
+   3. Name: `gen_date`
+   4. State: detached
+   docker container run --name gen_date -d -v ${PWD}/sidecar:/dck busybox sh -c 'while true; do date >> /dck/date.log; sleep 1; done'
+
+3. Check the content of `sidecar/date.log` with `cat`
+cat sidecar/date.log
+Wed Apr 10 14:37:03 UTC 2024
+Wed Apr 10 14:37:04 UTC 2024
+
+4. Run Busybox
+   1. Command: `tail -f /dck2/date.log`
+   2. Volume to mount: `$(pwd)/sidecar:/dck2`
+   3. State: attached
+   docker container run --rm -it -v ${pwd}/sidecar:/dck2 busybox tail -f /dck2/date.log
+
+5. Check content of `dck2/date.log` with `tail -f`
+docker container run --rm -it -v ${pwd}/sidecar:/dck2 busybox tail -f /dck2/date.log
+6. Exit container
+7. Run `docker kill gen_date`
+   1. Why is the container stoped ?
+   docker kill gen_date
+
+
+### In memory 
+
+1. Run busybox with `--tmpfs /test`
+docker container run --rm -it --tmpfs /test busybox       
+
+2. Check with `mount | grep test` that tmpfs is used 
+
+docker container run --rm -it --tmpfs /test busybox       
+/ # mount | grep test
+tmpfs on /test type tmpfs (rw,nosuid,nodev,noexec,relatime)
+/ # exit
