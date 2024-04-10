@@ -26,6 +26,10 @@ Create a dockerfile for a Flask application (python).
 6. Specify that the container use the port `9090`
 7. Specify the maintainer and the version of the dockerfile
 8. Make sure the container will run the command `python app.py`
+docker build -t myflaskapp .
+docker run -d -p 9090:9090 --name app saids017/my_flask:1.0
+
+
 
 ### Build the image
 
