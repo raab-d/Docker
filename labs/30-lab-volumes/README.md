@@ -9,21 +9,22 @@
 ### Existing volumes
 
 1. run `docker container run --name couchdb -d -p 5984:5984 couchdb:2.1`  
-Unable to find image 'couchdb:2.1' locally  
-2.1: Pulling from library/couchdb  
-d660b1f15b9b: Pull complete  
-0d7aab2be023: Pull complete  
-f58c3777efba: Pull complete  
-1acbc80638bb: Pull complete  
-d6a82611f685: Pull complete  
-27abbe831be1: Pull complete  
-2e41520ee187: Pull complete  
-f8d127415410: Pull complete  
-18cc54fd89c6: Pull complete  
-896902be7e0e: Pull complete  
-Digest: sha256:05a8b4a9bfe8e90fdf8630b404098aab5122c8ead228ad9b8d081309266b1cfb  
-Status: Downloaded newer image for couchdb:2.1  
-06ddfd6c9913ea30aaa058d1ddea3355a101dd8e9968631ce5dc2547210097b2 
+
+   Unable to find image 'couchdb:2.1' locally  
+   2.1: Pulling from library/couchdb  
+   d660b1f15b9b: Pull complete  
+   0d7aab2be023: Pull complete  
+   f58c3777efba: Pull complete  
+   1acbc80638bb: Pull complete  
+   d6a82611f685: Pull complete  
+   27abbe831be1: Pull complete  
+   2e41520ee187: Pull complete  
+   f8d127415410: Pull complete  
+   18cc54fd89c6: Pull complete  
+   896902be7e0e: Pull complete  
+   Digest: sha256:05a8b4a9bfe8e90fdf8630b404098aab5122c8ead228ad9b8d081309266b1cfb  
+   Status: Downloaded newer image for couchdb:2.1  
+   06ddfd6c9913ea30aaa058d1ddea3355a101dd8e9968631ce5dc2547210097b2 
 
 2. Check existing volumes 
 
