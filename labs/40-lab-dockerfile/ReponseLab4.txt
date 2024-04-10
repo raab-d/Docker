@@ -1,0 +1,67 @@
+# Lab 5 - Dockerfile
+
+## Create your docker image
+
+Create a dockerfile for a Flask application (python).
+
+### Tips
+ 
+### Create your dockerfile
+
+1. There is two file 
+   1. `requirement.txt`, contain python dependencies 
+   2. `app.py`, contain our flask app that listen on port `9090`
+
+2. Create a new directory named `myapp` 
+    mkdir myapp
+
+3. Copy `requirement.txt` and `app.py` in `myapp`
+   copy  app.py  myapp/                 
+   copy  requirements.txt myapp/ 
+4. Run `cd myapp`
+
+5. Create a file name `Dockerfile`
+   touch Dockerfile
+
+
+### Build the image
+
+1. Build the docker image and name it <dockerHubId>/my_flask:1.0
+ docker build -t kinsley94/my_flask:1.0 .
+[+] Building 0.0s (0/0)  docker:default
+[+] Building 37.2s (10/10) FINISHED                                                                                                            docker:default
+ => [internal] load build definition from Dockerfile                                                                                                     0.0s
+ => => transferring dockerfile: 670B                                                             
+ .
+ .
+ .
+ => => exporting layers                                                                                                                                  0.1s 
+ => => writing image sha256:c8ea4b1879a379ab9a8aa3916143f2f6797b59b34021baf1e0c001fb17815ca9                                                             0.0s 
+ => => naming to docker.io/kinsley94/my_flask:1.0  
+
+2. Push it to the docker hub
+   docker login
+   docker push kinsley94/my_flask:1.0
+   The push refers to repository [docker.io/kinsley94/my_flask]
+    3fca783bcebb: Preparing                                                                                                                                       
+    6a15292686af: Preparing                                                                                                                                       
+    6a15292686af: Pushed
+    2d3bae680ef4: Pushed
+   .
+   .
+   0238a1790324: Mounted from library/python
+   1.0: digest: sha256:cd71a919e8e2e5b330317e10ca4eb3ca47c904a85b54e205a805e237cf41e44f size: 2838
+
+### Run it 
+
+1. Run your application as `app`
+
+   docker run -d -p 9090:9090 --name app kinsley94/my_flask:1.0
+    1458c8ef105072692da324b2ae50539cd20c2428890333769f56eff76b0bcf01
+
+2. curl localhost:9090
+
+  $ curl localhost:9090
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  100    37  100    37    0     0   4286      0 --:--:-- --:--:-- --:--:--  4625This is a sfeir school about Docker !
