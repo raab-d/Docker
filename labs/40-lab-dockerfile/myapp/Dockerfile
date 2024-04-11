@@ -1,0 +1,24 @@
+# Utilisation de l'image Python comme base
+FROM python:3.11.0-slim
+
+# Copie du fichier requirements.txt dans /app/requirements.txt
+COPY requirements.txt /app/requirements.txt
+
+# Définition de /app comme répertoire de travail
+WORKDIR /app
+
+# Installation des dépendances Python via pip
+RUN pip install -r requirements.txt
+
+# Copie du fichier app.py dans /app
+COPY app.py /app
+
+# Spécification du port 9090
+EXPOSE 9090
+
+# Spécification du mainteneur et de la version
+LABEL maintainer="VotreNom <votre@email.com>" \
+      version="1.0"
+
+# Commande pour exécuter l'application Flask
+CMD ["python", "app.py"]
