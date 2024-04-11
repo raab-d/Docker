@@ -32,5 +32,23 @@ Create a docker-compose.yaml for a Flask application (python) that use a redis.
 ### set up the stack
 
 1. Use the `docker-compose up -d` command
+
+docker-compose up --build -d
+[+] Building 0.0s (0/0)  docker:default
+2024/04/11 15:18:16 http2: server: error reading preface from client //./pipe/docker_engine: file has already been clo[+] Building 11.1s (11/11) FINISHED                                                                    docker:default
+
+docker-compose up -d  
+[+] Running 2/2
+ ✔ Container myapp-compose-redis-1  Running                                                                      0.0s 
+ ✔ Container myapp-compose-web-1    Started                                                                      0.0s
+
 2. curl the `localhost:9092`
    1. Check that the `number` of visit is incremented at each call
+
+   curl localhost:9092
+   This is a sfeir school about Docker ! 
+   I have been seen 1 times.
+
+   curl localhost:9092
+   This is a sfeir school about Docker ! 
+   I have been seen 2 times.
