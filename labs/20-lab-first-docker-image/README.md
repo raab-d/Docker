@@ -76,9 +76,30 @@ Les autres couches sont celles héritées de l'image nginx d'origine, montrant l
 ### Upload our image
 
 1. Tag your image with the tag `<dockerHubId>/my_awsome_image:1.0`
+abdou@Rabs MINGW64 ~/Desktop/ESGI/S2/docker/Docker (rabah_AZI/docker/labs)
+$ docker tag my_awesome_image Rabah94AZI/my_awesome_image:1.0
+
+abdou@Rabs MINGW64 ~/Desktop/ESGI/S2/docker/Docker (rabah_AZI/docker/labs)
+$
+
 2. List your docker images
    1. What do you see ?
+   abdou@Rabs MINGW64 ~/Desktop/ESGI/S2/docker/Docker (rabah_AZI/docker/labs)
+$ docker image ls
+REPOSITORY                    TAG       IMAGE ID       CREATED          SIZE
+Rabah94AZI/my_awesome_image   1.0       8b2f24f49dfa   17 minutes ago   187MB
+my_awesome_image              latest    8b2f24f49dfa   17 minutes ago   187MB
+nginx                         latest    92b11f67642b   7 weeks ago      187MB
+
 3. Use the CLI to log into your docker account
+docker push Rabah94AZI/my_awesome_image:1.0
+
 4. Push your image
+docker push Rabah94AZI/my_awesome_image:1.0
+abdou@Rabs MINGW64 ~/Desktop/ESGI/S2/docker/Docker (rabah_AZI/docker/labs)
+$ docker push Rabah94AZI/my_awesome_image:1.0
+The push refers to repository [Rabah94AZI/my_awesome_image]
+Get "https://Rabah94AZI/v2/": dialing Rabah94AZI:443 container via direct connection because static system has no HTTPS proxy: resolving host Rabah94AZI: lookup Rabah94AZI: no such host
+
 5. Check that your image is available on `https://hub.docker.com/repository/docker/<dockerHubId>/my_awsome_image/`
 6. Delete the repository `https://hub.docker.com/repository/docker/<dockerHubId>/my_awsome_image/settings`
