@@ -34,3 +34,4 @@ Create a docker-compose.yaml for a Flask application (python) that use a redis.
 1. Use the `docker-compose up -d` command
 2. curl the `localhost:9092`
    1. Check that the `number` of visit is incremented at each call
+   1 12 ....
