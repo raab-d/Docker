@@ -1,6 +1,6 @@
 # Create image with you nodejs image
 # (replace zbbfufu by your docker id)
-FROM micka98/python:latest
+FROM micka98/python:3.10.14-bookworm
 # Declare ports listening in the container
 EXPOSE 9090
 # Define variables
