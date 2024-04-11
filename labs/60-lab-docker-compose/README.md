@@ -1,4 +1,4 @@
-# Lab 5 - docker-compose
+# Lab 6 - docker-compose
 
 ## Create your docker-compose file
 
