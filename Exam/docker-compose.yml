@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  backend:
+    build: ./backend
+    volumes:
+      - database:/app/data
+    networks:
+      - anime-net
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: ./frontend
+    networks:
+      - anime-net
+    ports:
+      - "8501:8501"
+    environment:
+      - BACKEND_URL=http://backend:8000
+
+networks:
+  anime-net:
+
+volumes:
+  database:
