@@ -12,10 +12,13 @@ Create a docker-compose.yaml for a Flask application (python) that use a redis.
    1. `requirement.txt`, contain python dependencies 
    2. `app.py`, contain our flask app that listen on port `9090`
 2. Create a new directory named `myapp-compose` 
+Command : mkdir myapp_compose 
 3. Copy `requirement.txt` and `app.py` in `myapp-compose`
+Command: cp app.py myapp-compose/
+Command: cp requirements.txt myapp-compose/
 4. Run `cd myapp-compose`
 5. Create a file name `myapp-compose`
-
+Command : touch myapp-compose.yaml 
 ### Modify the myapp-compose
 
 1. Use the version `3.9`
@@ -28,9 +31,11 @@ Create a docker-compose.yaml for a Flask application (python) that use a redis.
      1. Image: `redis:alpine`
      2. Has a network `my-shared-network`
 3. A network `my-shared-network`
-
+Disponible dans myapp_compose/docker-compose.yaml
 ### set up the stack
-
+sudo
 1. Use the `docker-compose up -d` command
 2. curl the `localhost:9092`
    1. Check that the `number` of visit is incremented at each call
+Times Augmente à chaque exécutuion de curl localhost:9092, ou à chaque connexion via le 
+navigateur.
