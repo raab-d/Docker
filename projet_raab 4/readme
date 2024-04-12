@@ -1,0 +1,15 @@
+Les membres du groupe :
+
+    ANNA DIAW
+    Amine OULD SAADI
+    ESSAID SAYAD
+    AIT IDIR Adem
+
+    5IABD1
+
+    Comment utiliser
+        Assurez-vous que Docker et Docker Compose sont installés sur votre système.
+        Placez-vous dans le répertoire contenant le fichier docker-compose.yml.
+        Exécutez docker-compose up pour démarrer les services.
+        Accédez à l'application Web à l'adresse http://localhost:5000.
+        Pour arrêter les services, utilisez Ctrl+C dans le terminal où Docker Compose est en cours d'exécution.s
