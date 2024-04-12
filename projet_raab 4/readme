@@ -12,4 +12,6 @@ Les membres du groupe :
         Placez-vous dans le répertoire contenant le fichier docker-compose.yml.
         Exécutez docker-compose up pour démarrer les services.
         Accédez à l'application Web à l'adresse http://localhost:5000.
-        Pour arrêter les services, utilisez Ctrl+C dans le terminal où Docker Compose est en cours d'exécution.s
+        Pour arrêter les services, utilisez Ctrl+C dans le terminal où Docker Compose est en cours d'exécution.
+
+Pour exécuter le projet : télécharger la base de donnée sur ce lien : https://drive.google.com/file/d/1sz_JvvjWXnKw5ZeQ1S-mFdb_u2dhl0Ow/view?usp=share_link et le mettre à la racine du projet 
