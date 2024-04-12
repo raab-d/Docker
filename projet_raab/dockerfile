@@ -1,0 +1,20 @@
+# Utiliser l'image Python officielle comme image de base
+FROM python:3.8-slim
+
+# Définir le répertoire de travail dans le conteneur
+WORKDIR /app
+
+# Copier les fichiers de l'application dans le conteneur
+COPY . /app
+
+# Installer les dépendances de l'application
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Exposer le port sur lequel l'application va tourner
+EXPOSE 5000
+
+# Définir la variable d'environnement FLASK_APP
+ENV FLASK_APP=app.py
+
+# Exécuter create_db.py avant de démarrer le serveur Flask
+CMD python create_db.py && flask run --host=0.0.0.0
