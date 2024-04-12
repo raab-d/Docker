@@ -1,0 +1,9 @@
+FROM python:3.8-slim
+
+WORKDIR /traitement
+
+COPY . /traitement
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+CMD ["sh", "-c", "python create_db.py && python traitement.py"]

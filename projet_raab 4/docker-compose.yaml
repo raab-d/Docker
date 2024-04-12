@@ -1,0 +1,41 @@
+version: '3.8'
+services:
+  webapp:
+    build:
+      context: .
+      dockerfile: dockerfile.app  
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+      - data_volume:/app/data
+    depends_on:
+      - traitement-service  
+    networks:
+      - mon_reseau
+
+  traitement-service:
+    build:
+      context: .
+      dockerfile: dockerfile.traitement 
+    volumes:
+      - .:/traitement  
+      - data_volume:/traitement/data
+    environment:
+      - SOME_ENV_VAR=value  
+    networks:
+      - mon_reseau
+
+networks:
+  mon_reseau:
+      external: true
+      name: projet_raab_mon_reseau
+
+volumes:
+  data_volume:
+
+
+
+
+
+  
