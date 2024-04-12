@@ -1,8 +1,14 @@
+# Team
+
+DOROSENCO Nadejda
+ROQUE Louis
+ZHOU Jean-Marc
+
 # Examen 
 
 Notre application est un moteur de recommendation d'Animés japonais, nos données proviennent de requêtes effectuées sur l'API Animelist.
 
-## Test
+## Utilisation du projet
 
 Nous avons un volume **exam_database** auquel nous avons ajouté à la main les données "updated_animes_update_base.csv" à l'aide de la commande suivante : 
 
